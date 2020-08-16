@@ -94,6 +94,9 @@ runSCENIC_3_scoreCells <- function(scenicOptions, exprMat,
     
     ### Save threshold info as text (e.g. to edit/modify...)
     trhAssignment <- getThresholdSelected(cells_AUCellThresholds)
+    if (class(trhAssignment) != "vector"{
+      trhAssignment <- unlist(trhAssignment)
+    }
     trhAssignment <- signif(trhAssignment, 3) # TODO why is it sometimes a list? https://github.com/aertslab/AUCell/issues/3
     commentsThresholds <- sapply(cells_AUCellThresholds, function(x) unname(x$aucThr$comment))
     
